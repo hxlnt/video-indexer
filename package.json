@@ -1,7 +1,7 @@
 {
   "name": "video-indexer",
   "version": "0.1.0",
-  "description": "Node.js wrapper for Microsoft Cognitive Services Video Indexer REST API",
+  "description": "Node.js wrapper for Microsoft Cognitive Services Video Indexer REST API. Work-in-progress--not feature complete.",
   "main": "video-indexer.js",
   "scripts": {
     "test": "node example/app.js"
