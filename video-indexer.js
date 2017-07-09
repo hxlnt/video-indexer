@@ -85,20 +85,21 @@ Vindexer.prototype.updateTranscript = function() {
 }
 
 Vindexer.prototype.uploadVideo = function(params) {
-    if (!params.name) { params.name = `video_${_uuid.v4()}`; }
-    if (!params.privacy) { params.privacy = 'Private'; }
-    if (!params.videoUrl && !params.videoData) { throw err('ERROR! :('); }
-    if (params.videoUrl && !params.videoData) { let videodata = ''; }
-    _Request.post({
-        url: `${apiurl}Breakdowns`,
-        method: "POST",
-        qs: params,
-        headers: { "Ocp-Apim-Subscription-Key": this.apiKey },
-        formData: videodata
-    }).then(function (result) { 
-        console.log(`HTTP REQUEST STATUS: ${result.statusCode}. Upload video complete. Result: ${result.body}`);
-        return result.body;
-    });
+// Work in progress
+//     if (!params.name) { params.name = `video_${_uuid.v4()}`; }
+//     if (!params.privacy) { params.privacy = 'Private'; }
+//     if (!params.videoUrl && !params.videoData) { throw err('ERROR! :('); }
+//     if (params.videoUrl && !params.videoData) { let videodata = ''; }
+//     _Request.post({
+//         url: `${apiurl}Breakdowns`,
+//         method: "POST",
+//         qs: params,
+//         headers: { "Ocp-Apim-Subscription-Key": this.apiKey },
+//         formData: videodata
+//     }).then(function (result) { 
+//         console.log(`HTTP REQUEST STATUS: ${result.statusCode}. Upload video complete. Result: ${result.body}`);
+//         return result.body;
+//     });
 }
 
 module.exports = Vindexer;
