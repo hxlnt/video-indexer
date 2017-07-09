@@ -2,25 +2,28 @@
   "name": "video-indexer",
   "version": "0.1.0",
   "description": "Node.js wrapper for Microsoft Cognitive Services Video Indexer REST API",
-  "main": "dist/index.js",
+  "main": "video-indexer.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node example/app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hxlnt/video-indexer.git"
   },
   "keywords": [
-    "video",
-    "indexer",
-    "cognitive",
-    "services",
-    "subtitles"
+    "video indexer",
+    "cognitive services",
+    "subtitles",
+    "video"
   ],
   "author": "Rachel Weil",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/hxlnt/video-indexer/issues"
   },
-  "homepage": "https://github.com/hxlnt/video-indexer#readme"
+  "homepage": "https://github.com/hxlnt/video-indexer#readme",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "request": "^2.81.0"
+  }
 }
