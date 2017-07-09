@@ -1,5 +1,7 @@
 # video-indexer
-This is a Node.js wrapper for the Microsoft Cognitive Services [Video Indexer API](https://www.videoindexer.ai/), currently in preview. This node package is still under development; not complete nor suitable for production use! PRs welcome! :)
+This is a Node.js wrapper for the Microsoft Cognitive Services [Video Indexer API](https://www.videoindexer.ai/), currently in preview. 
+
+This module is still under ongoing development; not complete nor suitable for production use! PRs welcome! :)
 
 ## Installation
 `npm install video-indexer`
