@@ -23,7 +23,7 @@ This Node.js module is still under development; it has been tested but is not gu
 
 ## Usage
 
-Grab a free API key by signing up [here](https://www.videoindexer.ai/account/login) and clicking on your account name, then "Profile." Replace "your_api_key" below with the API key for local testing. 
+Grab a free API key by signing up [here](https://videobreakdown.portal.azure-api.net/get-started) and clicking on your account name, then "Profile." Replace "your_api_key" below with the API key for local testing. 
 
 ```javascript
 const vindexer = require("video-indexer");
