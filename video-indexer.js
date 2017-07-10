@@ -150,18 +150,18 @@ Vindexer.prototype.updateFaceName = function(id, faceid, name) {
 }
 
 Vindexer.prototype.updateTranscript = function(id, language, vtt_text, params) {
-     _Request({
-        url: `${apiurl}/Breakdowns/UpdateTranscript/${id}?${language}`,
-        method: "PUT",
-        qs: params,
-        headers: { 
-            "Content-Type": "application/json",
-            "Ocp-Apim-Subscription-Key": this.apiKey },
-        body: vtt_text
-    }).then(function (result) { 
-        console.log(`HTTP REQUEST STATUS: ${result.statusCode}. Update transcript call complete. Result: ${result.body}`);
-        return result.body;
-    });
+    //  _Request({
+    //     url: `${apiurl}/Breakdowns/UpdateTranscript/${id}?${language}`,
+    //     method: "PUT",
+    //     qs: params,
+    //     headers: { 
+    //         "Content-Type": "application/json",
+    //         "Ocp-Apim-Subscription-Key": this.apiKey },
+    //     body: vtt_text
+    // }).then(function (result) { 
+    //     console.log(`HTTP REQUEST STATUS: ${result.statusCode}. Update transcript call complete. Result: ${result.body}`);
+    //     return result.body;
+    // });
 }
 
 Vindexer.prototype.uploadVideo = function(videoUrl, params) {
