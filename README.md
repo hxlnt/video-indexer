@@ -1,5 +1,5 @@
 # video-indexer
-This is a Node.js wrapper for the Microsoft Cognitive Services [Video Indexer API](https://www.videoindexer.ai/), currently in preview. Here are the features listed on the Video Indexer API website:
+This is a Node.js wrapper for the Microsoft Cognitive Services [Video Indexer API](https://www.videoindexer.ai/), currently in preview. Per the Video Indexer API website, its features include:
 
 > - Convert audio to text based on acoustic language models
 > - Find when each face appears in the video
