@@ -23,17 +23,13 @@ This Node.js module is still under development; it has been tested but is not gu
 
 ## Usage
 
-Grab a free API key by signing up [here](https://www.videoindexer.ai/account/login) and clicking on your account name, then "Profile." Replace "your_api_key" below with the API key.
+Grab a free API key by signing up [here](https://www.videoindexer.ai/account/login) and clicking on your account name, then "Profile." Replace "your_api_key" below with the API key for local testing. 
 
 ```javascript
 const vindexer = require("video-indexer");
 const Vindexer = new vindexer("your_api_key");
 
-// Get user id and name associated with API Key
-Vindexer.getAccounts();
-
-// Upload video via URL and generate intelligent insights such as
-// transcript (VTT), keywords, speaker recognition, OCR, and more.
+// Upload video via a URL and generate intelligent insights
 Vindexer.uploadVideo("http_://_video_url_dot_com/video.mp4", {
     // Optional
     name: 'My video name',
@@ -44,11 +40,20 @@ Vindexer.uploadVideo("http_://_video_url_dot_com/video.mp4", {
     partition: 'demos'
 });
 
-// Get progress of video processing
-Vindexer.getProcessingState("your_video_id");
-
 // Get full insights from previously-processed video
 Vindexer.getBreakdown("your_video_id");
+```
+
+### More examples
+
+Note that in the examples above and below, strings passed into functions are always required, while parameters that appear in the format of `{ this: 'that' }` are always optional.
+
+```javascript
+// Get user id and name associated with API Key
+Vindexer.getAccounts();
+
+// Get progress of video processing
+Vindexer.getProcessingState("your_video_id");
 
 // Search for videos within your own account
 // If you want to test with a publicly-available dataset instead, 
@@ -73,7 +78,8 @@ Vindexer.getPlayerWidgetUrl("your_video_id");
 
 // Get insights widget
 Vindexer.getInsightsWidgetUrl("your_video_id", {
-    // Optional. Other widget types are 'People', 'Sentiment', and 'Search'. If left unspecified, the widget will include all insight types
+    // Optional. Other widget types are 'People', 'Sentiment', and 'Search'. 
+    // If left unspecified, the widget will include all insight types
     widgetType: 'Keywords'
 });
 
@@ -106,5 +112,4 @@ Vindexer.deleteBreakdown("your_video_id", {
 
 ```
 
-Note that in the examples above, strings passed into functions are always required, while parameters that appear in the format of `{ this: 'that' }` are always optional.
 
