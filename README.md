@@ -38,10 +38,12 @@ Vindexer.uploadVideo("http_://_video_url_dot_com/video.mp4", {
     externalId: 'customvideoid',
     description: 'Check out this great demo video!',
     partition: 'demos'
-});
+})
+    .then( function(result){ console.log (result.body) } );
 
 // Get full insights from previously-processed video
-Vindexer.getBreakdown("your_video_id");
+Vindexer.getBreakdown("your_video_id")
+    .then( function(result){ console.log (result.body) } );;
 ```
 
 ### More examples
@@ -50,10 +52,12 @@ Note that in the examples above and below, strings passed into functions are alw
 
 ```javascript
 // Get user id and name associated with API Key
-Vindexer.getAccounts();
+Vindexer.getAccounts()
+    .then( function(result){ console.log (result.body) } );
 
 // Get progress of video processing
-Vindexer.getProcessingState("your_video_id");
+Vindexer.getProcessingState("your_video_id")
+    .then( function(result){ console.log (result.body) } );
 
 // Search for videos within your own account
 // If you want to test with a publicly-available dataset instead, 
@@ -71,26 +75,32 @@ Vindexer.search({
     externalId: 'some_external_id',
     language: 'English',
     searchInPublicAccount: false
-});
+})
+    .then( function(result){ console.log (result.body) } );
 
 // Get video player widget URL
-Vindexer.getPlayerWidgetUrl("your_video_id");
+Vindexer.getPlayerWidgetUrl("your_video_id")
+    .then( function(result){ console.log (result.body) } );
 
 // Get insights widget
 Vindexer.getInsightsWidgetUrl("your_video_id", {
     // Optional. Other widget types are 'People', 'Sentiment', and 'Search'. 
     // If left unspecified, the widget will include all insight types
     widgetType: 'Keywords'
-});
+})
+    .then( function(result){ console.log (result.body) } );
 
 // Get insights by external ID
-Vindexer.getInsightsWidgetByExternalId("external_id");
+Vindexer.getInsightsWidgetByExternalId("external_id")
+    .then( function(result){ console.log (result.body) } );
 
 // Get URL to VTT transcript
-Vindexer.getVttUrl("your_video_id");
+Vindexer.getVttUrl("your_video_id")
+    .then( function(result){ console.log (result.body) } );
 
 // Given a video ID and face ID, update the face with a name
-Vindexer.updateFaceName("your_video_id", "face_id", "Person Name");
+Vindexer.updateFaceName("your_video_id", "face_id", "Person Name")
+    .then( function(result){ console.log (result.body) } );
 
 // Reindex a previously-processed video
 Vindexer.reindexBreakdown("your_video_id", {
