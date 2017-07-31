@@ -3,7 +3,9 @@ const Vindexer = new vindexer("your_api_key");
 
 console.log(`Welcome to a simple testing app!`);
 
-Vindexer.getAccounts();
+
+Vindexer.getAccounts()
+    .then( function(result){ console.log (result.body) } );
 
 /* Uncomment the lines, replacing the placeholder strings with a valid video ID or URL, to test these commands. More features coming soon!
 
@@ -16,11 +18,14 @@ Vindexer.uploadVideo("http_://_video_url_dot_com", {
     description: 'Check out this great demo video!',
     partition: 'demos',
     callbackUrl: 'http_://_callbackurl_dot_com'
-});
+})
+    .then( function(result){ console.log (result.body) } );
 
-Vindexer.getProcessingState("your_video_id");
+Vindexer.getProcessingState("your_video_id")
+    .then( function(result){ console.log (result.body) } );
 
-Vindexer.getBreakdown("your_video_id");
+Vindexer.getBreakdown("your_video_id")
+    .then( function(result){ console.log (result.body) } );;
 
 Vindexer.search({
     // Optional
@@ -35,35 +40,44 @@ Vindexer.search({
     externalId: 'some_external_id',
     language: 'English',
     searchInPublicAccount: false
-});
+})
+    .then( function(result){ console.log (result.body) } );
 
-Vindexer.getPlayerWidgetUrl("your_video_id");
+Vindexer.getPlayerWidgetUrl("your_video_id")
+    .then( function(result){ console.log (result.body) } );
 
 Vindexer.getInsightsWidgetUrl("your_video_id", {
     // Optional
     widgetType: 'Keywords'
-});
+})
+    .then( function(result){ console.log (result.body) } );
 
-Vindexer.getInsightsWidgetByExternalId("external_id");
+Vindexer.getInsightsWidgetByExternalId("external_id")
+    .then( function(result){ console.log (result.body) } );
 
-Vindexer.getVttUrl("your_video_id");
+Vindexer.getVttUrl("your_video_id")
+    .then( function(result){ console.log (result.body) } );
 
-Vindexer.updateFaceName("your_video_id", "face_id", "Person Name");
+Vindexer.updateFaceName("your_video_id", "face_id", "Person Name")
+    .then( function(result){ console.log (result.body) } );
 
 Vindexer.reindexBreakdown("your_video_id", {
     // Optional
     callbackUrl: 'http_://_callbackurl_dot_com'
-});
+})
+    .then( function(result){ console.log (result.body) } );
 
 Vindexer.reIndexBreakdownByExternalId("external_id", {
     // Optional
     callbackUrl: 'http_://_callbackurl_dot_com'
 })
+    .then( function(result){ console.log (result.body) } );
 
 Vindexer.deleteBreakdown("your_video_id", {
     // Optional
     deleteInsights: true
-});
+})
+    .then( function(result){ console.log (result.body) } );
 
 
 */
