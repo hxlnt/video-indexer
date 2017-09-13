@@ -1,6 +1,6 @@
 {
   "name": "video-indexer",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Node.js wrapper for Microsoft Cognitive Services Video Indexer REST API.",
   "main": "video-indexer.js",
   "scripts": {
@@ -26,6 +26,7 @@
   "homepage": "https://github.com/hxlnt/video-indexer#readme",
   "dependencies": {
     "bluebird": "^3.5.0",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "uuid": "^3.1.0"
   }
 }

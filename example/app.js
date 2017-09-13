@@ -1,4 +1,5 @@
 const vindexer = require('../video-indexer');
+// For local testing, replace your_api_key with your Video Indexer API key. For production, store API key securely.
 const Vindexer = new vindexer("your_api_key");
 
 console.log(`Welcome to a simple testing app!`);
@@ -9,8 +10,9 @@ Vindexer.getAccounts()
 
 /* Uncomment the lines, replacing the placeholder strings with a valid video ID or URL, to test these commands. More features coming soon!
 
-Vindexer.uploadVideo("http_://_video_url_dot_com", {
+Vindexer.uploadVideo({
     // Optional
+    videoUrl: "http_://_video_url_dot_/video.mp4",
     name: 'My video name',
     privacy: 'Private', 
     language: 'English', 
@@ -64,20 +66,17 @@ Vindexer.updateFaceName("your_video_id", "face_id", "Person Name")
 Vindexer.reindexBreakdown("your_video_id", {
     // Optional
     callbackUrl: 'http_://_callbackurl_dot_com'
-})
-    .then( function(result){ console.log (result.body) } );
+});
 
 Vindexer.reIndexBreakdownByExternalId("external_id", {
     // Optional
     callbackUrl: 'http_://_callbackurl_dot_com'
-})
-    .then( function(result){ console.log (result.body) } );
+});
 
 Vindexer.deleteBreakdown("your_video_id", {
     // Optional
     deleteInsights: true
-})
-    .then( function(result){ console.log (result.body) } );
+});
 
 
 */

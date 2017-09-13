@@ -29,9 +29,10 @@ Grab a free API key by signing up [here](https://videobreakdown.portal.azure-api
 const vindexer = require("video-indexer");
 const Vindexer = new vindexer("your_api_key");
 
-// Upload video via a URL and generate intelligent insights
-Vindexer.uploadVideo("http_://_video_url_dot_com/video.mp4", {
+// Upload video via a URL and generate intelligent insights. If no URL is specified, the file should be passed as a multipart/form body content.
+Vindexer.uploadVideo({
     // Optional
+    videoUrl: "http_://_video_url_dot_/video.mp4",
     name: 'My video name',
     privacy: 'Private', 
     language: 'English', 

@@ -112,9 +112,7 @@ Vindexer.prototype.updateTranscript = function(id, language, vtt_text, params) {
     // })
 }
 
-Vindexer.prototype.uploadVideo = function(videoUrl, params) {
-// Work in progress: only accepts video by URL
-    params.videoUrl = videoUrl;
+Vindexer.prototype.uploadVideo = function(params) {
     if (!params.name) { params.name = `video_${_uuid.v4()}`; }
     if (!params.privacy) { params.privacy = 'Private'; }
     return _Request.postAsync({
