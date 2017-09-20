@@ -113,8 +113,21 @@ Vindexer.prototype.updateTranscript = function(id, language, vtt_text, params) {
 }
 
 Vindexer.prototype.uploadVideo = function(params) {
-    if (!params.name) { params.name = `video_${_uuid.v4()}`; }
+    let generatedId = _uuid.v4();
+    if (!params.name) { params.name = `video_${generatedId}`; }
     if (!params.privacy) { params.privacy = 'Private'; }
+    if (!params.fileName) { params.fileName = generatedId }
+
+    let formData = {};
+
+    if(params.streamData) {
+        formData = { file: 
+            { value: params.streamData,
+              options: 
+               { filename: params.fileName,
+                 contentType: null } } }
+    }
+
     return _Request.postAsync({
         url: `${apiurl}/Breakdowns`,
         qs: params,
@@ -122,9 +135,8 @@ Vindexer.prototype.uploadVideo = function(params) {
             "Content-Type": "multipart/form-data",
             "Ocp-Apim-Subscription-Key": this.apiKey
         },
-        formData: {}
+        formData: formData
     })
 }
 
 module.exports = Vindexer;
-
