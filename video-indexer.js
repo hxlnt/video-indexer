@@ -6,8 +6,8 @@ const _uuid = require('uuid');
 const apiurl = "https://videobreakdown.azure-api.net/Breakdowns/Api/Partner";
 
 var Vindexer = function(apikey) { 
-    this.apiKey = apikey; 
-    }
+    this.apiKey = apikey;
+}
 
 Vindexer.prototype.getAccounts = function() {
     return _Request.getAsync({
@@ -55,11 +55,11 @@ Vindexer.prototype.getPlayerWidgetUrl = function(id) {
     })
 }
 
-Vindexer.prototype.getProcessingState = function(id) {
+Vindexer.prototype.getProcessingState = function getProcessingState(id) {
     return _Request.getAsync({
         url: `${apiurl}/Breakdowns/${id}/State`,
         headers: { "Ocp-Apim-Subscription-Key": this.apiKey }
-    })
+    }).bind(this);
 }
 
 Vindexer.prototype.getVttUrl = function(id, params) {
@@ -68,6 +68,12 @@ Vindexer.prototype.getVttUrl = function(id, params) {
         qs: params,
         headers: { "Ocp-Apim-Subscription-Key": this.apiKey }
     })
+}
+
+Vindexer.prototype.downloadVtt = function(vttUrl) {
+    return _Request.getAsync({
+        url: vttUrl
+    });
 }
 
 Vindexer.prototype.reindexBreakdown = function(id, params) {
@@ -136,7 +142,57 @@ Vindexer.prototype.uploadVideo = function(params) {
             "Ocp-Apim-Subscription-Key": this.apiKey
         },
         formData: formData
-    })
+    }).bind(this);
+}
+
+//Meta-method to poll the processing status and resolve the promise when complete
+Vindexer.prototype.waitForProcessing = function(id) {
+    var _self = this;
+    return new Promise(function(resolve) {
+        var cps = checkProcessingStatus.bind(_self);
+        cps(resolve, id);
+    });
+}
+
+function checkProcessingStatus(resolve, id, previousPercent) {
+    this.getProcessingState(id).then(function (result) {     
+        let percent = 0;
+
+        if(!previousPercent && previousPercent !== 0) {
+            previousPercent = -1;
+        }
+        if(result) {
+            //first call
+            var resultObj = JSON.parse(result.body);
+            //console.log(result.body);
+            let percentString = resultObj.progress;
+
+            if(resultObj.state === 'Processed') {
+                percent = 100;
+            } else if(resultObj.ErrorType) {
+                //Occasionally the service isn't fast enough to reply after uploading
+                console.log(`Server reported error, assuming 0% processed. Error: ${resultObj.ErrorType}`)
+                percent = 0;
+            } else if(percentString.length > 0) {
+                percent = parseInt(percentString.substring(0, percentString.length - 1));
+            }
+        }        
+        
+        //console.log(percentString);
+
+        //console.log(percent + '% ' + previousPercent + '(prev)');
+        if(percent !== previousPercent) {
+            console.log(percent + '% Complete');
+        }
+        
+        if(percent === 100) {
+            resolve(id);
+        } else {
+            //console.log('Calling with percent ' + percent);
+            var cps = checkProcessingStatus.bind(this);
+            setTimeout(function() { cps(resolve, id, percent); }, 3000);
+        }
+    });
 }
 
 module.exports = Vindexer;
