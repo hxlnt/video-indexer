@@ -14,8 +14,6 @@ This is a Node.js wrapper for the Microsoft Cognitive Services [Video Indexer AP
 > - Find out the key words discussed in each segment
 > - Automatically detect key frames
 
-This Node.js module is still under development; it has been tested but is not guaranteed for production use. Issues and PRs welcome! :)
-
 ## Installation
 
 `npm install video-indexer`
